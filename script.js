@@ -1,53 +1,62 @@
 //imagen de cabecera random al refrescar
-
 const fotosBanner = [
-    'Imagenes/1.jpg',
-    'Imagenes/2.jpg',
-    'Imagenes/3.jpg',
-    'Imagenes/4.jpg',
-    'Imagenes/5.jpg',
-    'Imagenes/6.jpg',
-    'Imagenes/7.jpg',
-    'Imagenes/8.jpg'
+    {src: 'Imagenes/1.jpg', alt: 'atardecer desde el mar'},
+    {src: 'Imagenes/2.jpg', alt: 'glovos aerostaticos en altura'},
+    {src: 'Imagenes/3.jpg', alt: 'atardecer desde el cielo'},
+    {src: 'Imagenes/4.jpg', alt: 'glovos aerostaticos desde tierra'},
+    {src: 'Imagenes/5.jpg', alt: 'luna llena en la noche'},
+    {src: 'Imagenes/6.jpg', alt: 'montaña nevada'},
+    {src: 'Imagenes/7.jpg', alt: 'pajaros volando en el atardecer'},
+    {src: 'Imagenes/8.jpg', alt: 'dientes de leon'},
 ];
-
-function getFotoBannerRandom() {
-    const i = Math.floor(Math.random() * fotosBanner.length);
-    return fotosBanner[i]
-};
 
 const fotoBanner = document.querySelector('#fotoBanner');
 
-function pushFotoBannerRandom() {
-    fotoBanner.src = getFotoBannerRandom();
+function FotoBannerRandom() {
+    const i = Math.floor(Math.random() * fotosBanner.length);
+    const fotoSeleccionada = fotosBanner[i];
+    fotoBanner.src = fotoSeleccionada.src;
+    fotoBanner.alt = fotoSeleccionada.alt;
 };
 
-window.addEventListener('load', pushFotoBannerRandom);
+window.addEventListener('load', FotoBannerRandom);
 
 //imagenes de viajes random al refrescar
 const fotosViajes = [
-    'Imagenes/viajes-1.jpg',
-    'Imagenes/viajes-2.jpg',
-    'Imagenes/viajes-3.jpg',
-    'Imagenes/viajes-4.jpg',
-    'Imagenes/viajes-5.jpg',
-    'Imagenes/viajes-6.jpg',
-    'Imagenes/viajes-7.jpg'
+    {src: 'Imagenes/viajes-1.jpg', alt: 'mujer en hamaca en playa paradisíaca'},
+    {src: 'Imagenes/viajes-2.jpg', alt: 'casas flotantes en las fidji'},
+    {src: 'Imagenes/viajes-3.jpg', alt: 'poste de carteles indicando capitales del mundo'},
+    {src: 'Imagenes/viajes-4.jpg', alt: 'plaza de España en Sevilla'},
+    {src: 'Imagenes/viajes-5.jpg', alt: 'plaza de España en Sevilla 2'},
+    {src: 'Imagenes/viajes-6.jpg', alt: 'paseo al lado del mar'},
+    {src: 'Imagenes/viajes-7.jpg', alt: 'castillo en lo alto del pueblo'},
 ];
-
-function getFotoViajesRandom() {
-    const i = Math.floor(Math.random() * fotosViajes.length);
-    return fotosViajes[i]
-};
 
 const fotoViajes1 = document.querySelector('#fotoViajes1');
 const fotoViajes2 = document.querySelector('#fotoViajes2');
 const fotoViajes3 = document.querySelector('#fotoViajes3');
 
-function pushFotoViajesRandom() {
-    fotoViajes1.src = getFotoViajesRandom();
-    fotoViajes2.src = getFotoViajesRandom();
-    fotoViajes3.src = getFotoViajesRandom();
+function FotoViajes1Random() {
+    const i = Math.floor(Math.random() * fotosViajes.length);
+    const fotoSeleccionada = fotosViajes[i];
+    fotoViajes1.src = fotoSeleccionada.src;
+    fotoViajes1.alt = fotoSeleccionada.alt;
 };
 
-window.addEventListener('load', pushFotoViajesRandom);
+function FotoViajes2Random() {
+    const i = Math.floor(Math.random() * fotosViajes.length);
+    const fotoSeleccionada = fotosViajes[i];
+    fotoViajes2.src = fotoSeleccionada.src;
+    fotoViajes2.alt = fotoSeleccionada.alt;
+};
+
+function FotoViajes3Random() {
+    const i = Math.floor(Math.random() * fotosViajes.length);
+    const fotoSeleccionada = fotosViajes[i];
+    fotoViajes3.src = fotoSeleccionada.src;
+    fotoViajes3.alt = fotoSeleccionada.alt;
+};
+
+window.addEventListener('load', FotoViajes1Random);
+window.addEventListener('load', FotoViajes2Random);
+window.addEventListener('load', FotoViajes3Random);
