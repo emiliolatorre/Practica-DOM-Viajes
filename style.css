@@ -67,3 +67,5 @@ footer form select {
 footer {
     margin-bottom: 30px;
 }
+
+/*me faltaria pasar a mobile first, y luego creo 2 medias queries con min.width*/
