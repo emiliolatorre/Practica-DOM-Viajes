@@ -3,20 +3,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
 //VARIABLES (Variables > Objetos > Arrays)
-const fotoBanner = document.querySelector('#fotoBanner');
-
-const fotoViajes1 = document.querySelector('#fotoViajes1');
-const fotoViajes2 = document.querySelector('#fotoViajes2');
-const fotoViajes3 = document.querySelector('#fotoViajes3');
-
-const titulo1 = document.querySelector('#titulo1')
-const titulo2 = document.querySelector('#titulo2')
-const titulo3 = document.querySelector('#titulo3')
-
-const containerFlex = document.querySelector('#containerflex');
-const container2 = document.querySelector('#container2');
-
-const cajas = document.querySelectorAll('.caja');
+const containerBanner = document.querySelector('#containerBanner');
+const containerCards = document.querySelector('#containerCards');
+const containerCardGrande = document.querySelector('#containerCardGrande');
+const containerDestinos = document.querySelector('#containerDestinos');
 
 const fragment = document.createDocumentFragment();
 
@@ -76,133 +66,174 @@ const fotosViajes = [
         id: 'Viaje 1',
         src: 'Imagenes/viajes-1.jpg',
         title: 'Viaje 1',
-        alt: 'mujer en hamaca en playa paradisíaca'
+        alt: 'mujer en hamaca en playa paradisíaca',
+        textContent: 'textContent Viaje 1: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
     },
     {
         id: 'Viaje 2',
         src: 'Imagenes/viajes-2.jpg',
         title: 'Viaje 2',
-        alt: 'casas flotantes en las fidji'
+        alt: 'casas flotantes en las fidji',
+        textContent: 'textContent Viaje 2: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
     },
     {
         id: 'Viaje 3',
         src: 'Imagenes/viajes-3.jpg',
         title: 'Viaje 3',
-        alt: 'poste de carteles indicando capitales del mundo'
+        alt: 'poste de carteles indicando capitales del mundo',
+        textContent: 'textContent Viaje 3: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
     },
     {
         id: 'Viaje 4',
         src: 'Imagenes/viajes-4.jpg',
         title: 'Viaje 4',
-        alt: 'plaza de España en Sevilla'
+        alt: 'plaza de España en Sevilla',
+        textContent: 'textContent Viaje 4: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
     },
     {
         id: 'Viaje 5',
         src: 'Imagenes/viajes-5.jpg',
         title: 'Viaje 5',
-        alt: 'plaza de España en Sevilla 2'
+        alt: 'plaza de España en Sevilla 2',
+        textContent: 'textContent Viaje 5: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
     },
     {
         id: 'Viaje 6',
         src: 'Imagenes/viajes-6.jpg',
         title: 'Viaje 6',
-        alt: 'paseo al lado del mar'
+        alt: 'paseo al lado del mar',
+        textContent: 'textContent Viaje 6: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
     },
     {
         id: 'Viaje 7',
         src: 'Imagenes/viajes-7.jpg',
         title: 'Viaje 7',
-        alt: 'castillo en lo alto del pueblo'
+        alt: 'castillo en lo alto del pueblo',
+        textContent: 'textContent Viaje 7: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
+    }
+];
+
+const destinos = [
+    {
+        value: 'Burgos',
+        text: 'Burgos',
+    },
+    {
+        value: 'Costa Rica',
+        text: 'Costa Rica',
+    },
+    {
+        value: 'Bali',
+        text: 'Bali',
+    },
+    {
+        value: 'Fidji',
+        text: 'Fidji',
+    },
+    {
+        value: 'Maldivas',
+        text: 'Maldivas',
+    },
+    {
+        value: 'Almeria',
+        text: 'Almeria',
+    },
+    {
+        value: 'Ibiza',
+        text: 'Ibiza',
     }
 ];
 
 // EVENTOS
-//document. 'content loaded'
-
-
-    // FotoBannerRandom();
-    // const foto1 = FotoViajes1Random();
-    // const foto2 = FotoViajes2Random();
-    // const foto3 = FotoViajes3Random();
-    // crearBotones([foto1, foto2, foto3]);
-
 
 document.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         const id = event.target.id;
-        limpiar(container2);
+        limpiar(containerCardGrande);
         imprimirCardGrande(id)
     }
 });
 
 // FUNCIONES
+// juntas fotoViajesRandom en una. crear una funcion para crear cards.
 
-function FotoBannerRandom() {
+function imprimirBanner () {
     const i = Math.floor(Math.random() * fotosBanner.length);
     const fotoSeleccionada = fotosBanner[i];
-    fotoBanner.src = fotoSeleccionada.src;
-    fotoBanner.alt = fotoSeleccionada.alt;
-};
+    const newDiv = document.createElement('div');
+    const newImg = document.createElement('img');
+    newImg.src = fotoSeleccionada.src;
+    newImg.alt = fotoSeleccionada.alt;
+    newImg.classList.add('Banner');
+    newDiv.appendChild(newImg);
+    containerBanner.appendChild(newDiv);
+}
 
-// juntas fotoViajesRandom en una. crear una funcion para crear cards.
-function FotoViajes1Random() {
-    const i = Math.floor(Math.random() * fotosViajes.length);
-    const fotoSeleccionada = fotosViajes[i];
-    fotoViajes1.src = fotoSeleccionada.src;
-    fotoViajes1.alt = fotoSeleccionada.alt;
-    titulo1.innerHTML = fotoSeleccionada.title;
-    return fotoSeleccionada
-};
-
-function FotoViajes2Random() {
-    const i = Math.floor(Math.random() * fotosViajes.length);
-    const fotoSeleccionada = fotosViajes[i];
-    fotoViajes2.src = fotoSeleccionada.src;
-    fotoViajes2.alt = fotoSeleccionada.alt;
-    titulo2.innerHTML = fotoSeleccionada.title;
-    return fotoSeleccionada
-};
-
-function FotoViajes3Random() {
-    const i = Math.floor(Math.random() * fotosViajes.length);
-    const fotoSeleccionada = fotosViajes[i];
-    fotoViajes3.src = fotoSeleccionada.src;
-    fotoViajes3.alt = fotoSeleccionada.alt;
-    titulo3.innerHTML = fotoSeleccionada.title;
-    return fotoSeleccionada
-};
-
-function crearBotones(fotoSeleccionada) {
-    cajas.forEach((caja, index) => {
-        let button = document.createElement('button');
-        button.id = fotoSeleccionada[index].id;
-        button.textContent = 'Ampliar';
-        caja.appendChild(button);
-    })
+function imprimirCards () {
+    for (let i=0; i<fotosViajes.length; i++) {
+        const randomi = Math.floor(Math.random() * fotosViajes.length);
+        const fotoSeleccionada = fotosViajes[randomi];
+        const {id, src, alt, title, textContent} = fotoSeleccionada;
+        const newDiv = document.createElement('div');
+        newDiv.classList.add('caja');
+        const newImg = document.createElement('img');
+        const newTitle = document.createElement('h3');
+        const newText = document.createElement('p');
+        const newBtn = document.createElement('button');
+        newImg.src = src;
+        newImg.alt = alt;
+        newTitle.innerHTML = title;
+        newText.innerHTML = textContent;
+        newBtn.id = id;
+        newBtn.textContent = 'Ampliar información';
+        newDiv.append(newImg, newTitle, newText, newBtn);
+        containerCards.append(newDiv);
+    }
 }
 
 const imprimirCardGrande = (id) => {
     const fotoEncontrada = fotosViajes.find((elemento) => elemento.id === id);
     if (fotoEncontrada) {
+        const {src, alt, title, textContent} = fotoEncontrada;
         const newDiv = document.createElement('div');
         const newImg = document.createElement('img');
-        const newTitle = document.createElement('p');
-        newImg.src = fotoEncontrada.src;
-        newImg.alt = fotoEncontrada.alt;
-        newTitle.innerHTML = fotoEncontrada.title;
-        newDiv.appendChild(newImg);
-        newDiv.appendChild(newTitle);
-        container2.appendChild(newDiv);
+        const newTitle = document.createElement('h3');
+        const newText = document.createElement('p');
+        newDiv.classList.add('cardGrande')
+        newImg.src = src;
+        newImg.alt = alt;
+        newTitle.innerHTML = title;
+        newText.innerHTML = textContent;
+        newDiv.append(newImg, newTitle, newText);
+        containerCardGrande.appendChild(newDiv);
     } else {
         alert('La fotoEncontrada de referencia no existe');
     }
 }
+
+function imprimirDestinos () {
+    const newForm = document.createElement('form');
+    newForm.action = '';
+    newForm.mehotd = 'post';
+    const newSelect = document.createElement('select');
+    newSelect.classList.add('destinos');
+    destinos.forEach((destino) => {
+        const newOption = document.createElement('option');
+        newOption.value = destino.value;
+        newOption.innerHTML = destino.text;
+        newSelect.appendChild(newOption);
+    });
+    newForm.appendChild(newSelect);
+    containerDestinos.appendChild(newForm);
+};
 
 //ahora si es escalable
 function limpiar(elemento) {
     elemento.innerHTML = '';
 }
 
-FotoBannerRandom();
+imprimirBanner();
+imprimirCards();
+imprimirDestinos();
 
 });
