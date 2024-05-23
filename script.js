@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //VARIABLES (Variables > Objetos > Arrays)
 const containerBanner = document.querySelector('#containerBanner');
 const containerCards = document.querySelector('#containerCards');
+const containerOfertas = document.querySelector('#containerOfertas');
 const containerCardGrande = document.querySelector('#containerCardGrande');
 const containerDestinos = document.querySelector('#containerDestinos');
 
@@ -60,7 +61,7 @@ const fotosBanner = [
         alt: 'dientes de leon'
     },
 ];
-
+    
 const fotosViajes = [
     {
         id: 'Viaje 1',
@@ -90,6 +91,17 @@ const fotosViajes = [
         alt: 'plaza de España en Sevilla',
         textContent: 'textContent Viaje 4: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
     },
+    {
+        id: 'Viaje 5',
+        src: 'Imagenes/viajes-5.jpg',
+        title: 'Viaje 5',
+        alt: 'plaza de España en Sevilla 2',
+        textContent: 'textContent Viaje 5: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas non eveniet ea alias dignissimos fugit iure esse, fuga voluptatibus eum suscipit perspiciatis neque id mollitia est labore possimus accusamus totam?'
+    },
+   
+];
+const fotosOfertas = [
+   
     {
         id: 'Viaje 5',
         src: 'Imagenes/viajes-5.jpg',
@@ -169,26 +181,46 @@ function imprimirBanner () {
     containerBanner.appendChild(newDiv);
 }
 
-function imprimirCards () {
-    for (let i=0; i<fotosViajes.length; i++) {
-        const randomi = Math.floor(Math.random() * fotosViajes.length);
-        const fotoSeleccionada = fotosViajes[randomi];
+function crearCards (array) {
+    for (let i=0; i<array.length; i++) {
+      //  const randomi = Math.floor(Math.random() * fotosViajes.length);
+        const fotoSeleccionada = array[i];
         const {id, src, alt, title, textContent} = fotoSeleccionada;
+
         const newDiv = document.createElement('div');
         newDiv.classList.add('caja');
+
         const newImg = document.createElement('img');
-        const newTitle = document.createElement('h3');
-        const newText = document.createElement('p');
-        const newBtn = document.createElement('button');
         newImg.src = src;
         newImg.alt = alt;
+
+        const newTitle = document.createElement('h3');
         newTitle.innerHTML = title;
+
+        const newText = document.createElement('p');
         newText.innerHTML = textContent;
+
+        const newBtn = document.createElement('button');
         newBtn.id = id;
         newBtn.textContent = 'Ampliar información';
+        
         newDiv.append(newImg, newTitle, newText, newBtn);
-        containerCards.append(newDiv);
+        fragment.append(newDiv);
     }
+
+    return fragment
+}
+function imprimirCards(){
+
+    containerCards.append(crearCards(fotosViajes))
+    
+
+
+}
+
+function imprimirOfertas(){
+    containerOfertas.append(crearCards(fotosOfertas))
+
 }
 
 const imprimirCardGrande = (id) => {
@@ -234,6 +266,7 @@ function limpiar(elemento) {
 
 imprimirBanner();
 imprimirCards();
+imprimirOfertas()
 imprimirDestinos();
 
 });
